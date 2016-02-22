@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>3D chat room</title>
+    <meta name="description" content="3D chat room">
+    <script type="text/javascript" src="http://localhost:8882/socket.io/socket.io.js"></script>
+    <script src="lib/aframe.min.js"></script>
+    <script src="lib/keymaster.js"></script>
+    <script src="lib/underscore.js"></script>
+    <script src="js/utils.js"></script>
+
+  </head>
+
+  <body>
+    <div id="keys">Cam = wasd + J + K  -- cube = cursor pad + C + space</div>
+    <div id="count"></div>
+    <div id="me"></div>
+    <a-scene>
+      <a-camera fov="30" near="0.5" far="10000" position="0 3 11" cursor-visible="true" cursor-scale="2" cursor-color="#4CC3D9"   cursor-opacity="0.5">
+      <!--
+      <a-animation attribute="position" from="0 3 5" to="0 3 80" dur="2000"  repeat="indefinite" fill="forwards" direction="alternate"></a-animation>
+      !-->
+      </a-camera>
+    </a-scene>
+      <script src="js/3dcubes.js"></script>
+  </body>
+
+</html>
