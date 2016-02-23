@@ -74,10 +74,10 @@ app.use(express.static(__dirname + '/client/public'))
 
 
 var server =  http.createServer(app);
-server.listen(app.get('port'),'192.168.1.2', function(){
+server.listen(app.get('port'), function(){
 
 
-   
+/*   
   // Listening
   try {
     console.log('Old User ID: ' + process.getuid() + ', Old Group ID: ' + process.getgid());
@@ -88,9 +88,8 @@ server.listen(app.get('port'),'192.168.1.2', function(){
     console.log('Cowardly refusing to keep the process alive as root.');
     process.exit(1);
   }
-
-
-
+*/
+console.log('running')
     });
 
 
