@@ -1,6 +1,6 @@
 {
-  "name": "MusicBox-FruityLoop",
-  "version": "0.0.4",
+  "name": "3dGameServer",
+  "version": "0.0.1",
   "private": true,
   "devDependencies": {
     "grunt": "0.4.5",
@@ -38,6 +38,7 @@
     "locale": "0.0.20",
     "node-live-reload": "0.0.3",
     "express": "^4.13.4",
-    "lodash": "^4.3.0"
+    "lodash": "^4.3.0",
+    "sh": "0.0.3"
   }
 }

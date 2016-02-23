@@ -74,11 +74,20 @@ app.use(express.static(__dirname + '/client/public'))
 
 
 var server =  http.createServer(app);
-server.listen(app.get('port'), function(){
-    console.log(chalk.green( "Express API server listening on port "+ nconf.get('API_SERVER_PORT')  ) );
+server.listen(app.get('port'),'192.168.1.2', function(){
 
 
    
+  // Listening
+  try {
+    console.log('Old User ID: ' + process.getuid() + ', Old Group ID: ' + process.getgid());
+    process.setgid('everyone');
+    process.setuid('everyone');
+    console.log('New User ID: ' + process.getuid() + ', New Group ID: ' + process.getgid());
+  } catch (err) {
+    console.log('Cowardly refusing to keep the process alive as root.');
+    process.exit(1);
+  }
 
 
 
