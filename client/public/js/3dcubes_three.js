@@ -7,6 +7,38 @@ var camera, scene, renderer,light;
 var effect;
 
 
+
+function gotPosition(position) {
+
+
+	// top north : 48.8985587  2.3592401,21
+	// south = 	   48.8194131  2.3446799,21
+	// E     	   48.8415116  2.2531099,20
+	// W     	   48.8541586  2.4141059,20
+
+
+
+var l_ = 8806.042
+var lg = 3830.294
+
+		//	var l = position.coords.latitude
+			//var L = position.coords.longitude
+  		 var m =  scene.getObjectByName(player_id);
+
+       
+   
+        m.position.x = lg
+        
+        m.position.z =   l_;
+	}
+
+
+	function showError(){
+
+	}
+
+
+
 // keyBoard binding 
     
 key('left', function(){ 
@@ -94,14 +126,19 @@ function me_move(dir){
       
 
        if(dir == 'left'){
-            mep_x = mep.x-1
+            mep_x = mep.x-10
        }
         if(dir == 'right'){
-            mep_x = mep.x+1
+            mep_x = mep.x+10
        }
         if(dir == 'up'){
-            mep_z = mep.z-1
+            mep_z = mep.z-10
        }
+          if(dir == 'down'){
+            mep_z = mep.z+10
+       }
+
+
 
         if(dir == 'l'){
             mep_y = mep.y-1
@@ -111,18 +148,16 @@ function me_move(dir){
             mep_y = mep.y+1
        }
 
-        if(dir == 'down'){
-            mep_z = mep.z+1
-       }
+     
 
    
         m.position.x =  mep_x
         m.position.y =  mep_y
         m.position.z =   mep_z;
 
+        console.log(m.position)
 
-
-        	light.position.set( mep_x, mep_y,mep_z );
+   	light.position.set( mep_x, mep_y,mep_z );
 
 
      //   camera.position.set( mep_x, mep_x, mep_z);
@@ -149,14 +184,14 @@ function me_move(dir){
 
 
 
-		init();
+			init();
 	
 
 			function init() {
-
-				socket = io.connect();
+		socket = io.connect();
 				socket.emit('load')
 
+			
 
 			}
 
@@ -185,8 +220,8 @@ function me_move(dir){
 			  	var m =  scene.getObjectByName(player_id);
 			    var mep  = m.position
 
-    		    camera.position.set( mep.x-5, mep.y+2, mep.z-6);
 	      		camera.lookAt( new THREE.Vector3( mep.x, mep.y, mep.z) );
+    		    camera.position.set( mep.x-5, mep.y+1200, mep.z-6);
 
 				effect.render( scene, camera );
 
@@ -201,7 +236,7 @@ socket.on('loaded', function (data) {
 
 
 
-				camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 100 );
+				camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 100000 );
 				camera.position.set( 0, 0, 0 );
 				camera.lookAt( new THREE.Vector3(0,0,0) );
 				//camera.focalLength = camera.position.distanceTo( new THREE.Vector3() );
@@ -210,28 +245,28 @@ socket.on('loaded', function (data) {
 
 				
 			
-				var geometry = new THREE.PlaneGeometry( 40, 40 );
+				var geometry = new THREE.PlaneGeometry( 4000, 4000 );
 				geometry.rotateX( - Math.PI / 2 );
 				var material = new THREE.MeshStandardMaterial();
 				var mesh = new THREE.Mesh( geometry, material );
 				mesh.castShadow = true;
 				mesh.receiveShadow = true;
-				scene.add( mesh );
-
+	scene.add( mesh );
+//
 				
 				var light = new THREE.DirectionalLight( 0xffffff );
 				light.position.set( -1, 1.5, 0.5 );
 				light.castShadow = true;
 				scene.add( light );
 
-			//	var light = new THREE.DirectionalLight( 0xff0000, 1.5 );
-			//	light.position.set( 1, 1.5, -0.5 );
-			//	light.castShadow = true;
-			//	scene.add( light );
+			var light = new THREE.DirectionalLight( 0xff0000, 1.5 );
+			light.position.set( 1, 1.5, -0.5 );
+			light.castShadow = true;
+			scene.add( light );
 
 				//
 
-			
+
 
 
 
@@ -257,7 +292,7 @@ socket.on('loaded', function (data) {
                               }
 
 
-                               var geometry = new THREE.CubeGeometry( 1, 1, 1 );
+                               var geometry = new THREE.CubeGeometry( 10, 10, 10 );
 								var material = new THREE.MeshStandardMaterial( { color: o.color });
 								var mesh = new THREE.Mesh( geometry, material );
 								mesh.position.x = o.x;
@@ -294,6 +329,7 @@ socket.on('loaded', function (data) {
 				//
 
 				window.addEventListener( 'resize', onWindowResize, false );
+				navigator.geolocation.getCurrentPosition(gotPosition, showError, { enableHighAccuracy: true, maximumAge: 600000 });
 
 
 					animate();

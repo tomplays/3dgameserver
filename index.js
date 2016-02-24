@@ -29,12 +29,35 @@ var app = express();
         players: [], 
         world:{
             room : { 
-                objects: []
+                objects: [
+               
+
+
+
+                {type:'cube', x:3592.401, y:0, z:8985.587, player_id:'iA0'+Math.round(Math.random()*10), color:getRandColor() },
+                {type:'cube', x:3446.799, y:0, z:8194.131, player_id:'iA0'+Math.round(Math.random()*100),color:getRandColor() },
+                {type:'cube', x:2531.099, y:0, z:8415.116, player_id:'iA0'+Math.round(Math.random()*1000),color:getRandColor() },
+                {type:'cube', x:4141.059, y:0, z:8541.586, player_id:'iA0'+Math.round(Math.random()*30000), color:getRandColor() },
+
+
+            //    {type:'cube', x:3832.294, y:0, z:8808.042, player_id:'iA0'+Math.round(Math.random()*30000), color:getRandColor() },
+
+
+
+                ]
             }
         }
     }
 
-// {type:'cube', x:45, y:0, z:30, player_id:'iA0'}
+// 
+
+
+  // top north : 48.8985587  2.3592401,21
+  // south =     c  2.3446799,21
+  // E         48.8415116  2.2531099,20
+  // W         48.8541586  2.4141059,20
+
+
 
 app.all('*', function(req, res,next) {
     /**
