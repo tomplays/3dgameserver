@@ -50,17 +50,7 @@ key('k', function(){
 });
 
 
-function me_recolor(){
 
-    var cc = getRandColor()
-    player_color = cc
-      document.getElementById("me").innerHTML = '<h1 style="color:'+player_color+';">your id:'+player_name+'</h1>';
-       var e = document.getElementById(player_id)
-        e.setAttribute('material','color:'+player_color);
-
-
-
-}
  
 function cam_move(dir){
 
