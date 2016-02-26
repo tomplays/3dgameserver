@@ -31,9 +31,6 @@ var app = express();
             room : { 
                 objects: [
                
-
-
-
                 {type:'cube', x:3592.401, y:0, z:8985.587, player_id:'iA0'+Math.round(Math.random()*10), color:getRandColor() },
                 {type:'cube', x:3446.799, y:0, z:8194.131, player_id:'iA0'+Math.round(Math.random()*100),color:getRandColor() },
                 {type:'cube', x:2531.099, y:0, z:8415.116, player_id:'iA0'+Math.round(Math.random()*1000),color:getRandColor() },
@@ -164,16 +161,17 @@ console.log('running')
         socket.broadcast.emit('new_player',m)
 
         console.log('socket into server '+app.get('API_SERVER_PORT'))
-    
-    });
-	 // socket.emit('news', { hello: 'world' });
-	 socket.on('move', function(data){
 
-        _.each(game.world.room.objects, function(o){
-                if(data.player_id == o.player_id){
+  });
+	// socket.emit('news', { hello: 'world' });
+	socket.on('move', function(data){
+    _.each(game.world.room.objects, function(o){
+        if(data.player_id == o.player_id){
                     o.x = data.move.x
                     o.y = data.move.y
                     o.z = data.move.z
+
+                    console.log(data)
                 }
         })
         socket.broadcast.emit('moveback', data)

@@ -100,7 +100,6 @@ socket.on('loaded', function (d) {
 socket.on('connect', function () { 
 	console.log('connected')
 	socket.emit('load');
-   // runner(socket);
 });
 
 
