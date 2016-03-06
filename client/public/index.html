@@ -4,46 +4,34 @@
     <meta charset="utf-8">
     <title>3D chat room</title>
     <style>
-      body { margin: 0; }
-      canvas { width: 100%; height: 100% }
-       #map {
-        height: 100%;
-      }
+      body { margin: 0; background-color: #efd1b5; }
+      canvas { width: 100%; height: 100%; background:#fff; }
+      
     </style>
 
 
     <meta name="description" content="3D chat room">
     <script type="text/javascript" src="socket.io/socket.io.js"></script>
-    <script src="lib/aframe.min.js"></script>
     <script src="lib/keymaster.js"></script>
-        <script src="lib/three.min.js"></script>
-                <script src="lib/CardboardEffect.js"></script>
+    <script src="lib/three.min.js"></script>
+    <script src="lib/CardboardEffect.js"></script>
+    <script src="lib/TrackballControls.js"></script>
 
 
     <script src="lib/underscore.js"></script>
     <script src="js/utils.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNLL4n09fRPvHrkMAAgVoRZF8-PhZ-oj8&signed_in=true&libraries=places&callback=initMap" async defer></script>
+   
 
 
   </head>
 
   <body>
-    <div id="keys">Cam = wasd + J + K  -- cube = cursor pad + C + space</div>
-    <div id="count"></div>
-    <div id="map"></div>
+    <div style="display:none" id="keys">Cam = wasd + J + K  -- cube = cursor pad + C + space</div>
+    <div style="display:none" id="count"></div>
 
 
-    <div id="me"></div>
-    <!--
-   <a-scene>
-      <a-camera fov="30" near="0.5" far="10000" position="0 3 11" cursor-visible="true" cursor-scale="2" cursor-color="#4CC3D9"   cursor-opacity="0.5">
-     
-    
-      </a-camera>
-    </a-scene>
-    !-->
-   
-   <!-- <script src="js/3dcubes.js"></script>  !-->
+    <div  style="display:none" id="me"></div>
+ 
      <script src="js/3dcubes_three.js"></script> 
 
   </body>

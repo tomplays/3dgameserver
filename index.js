@@ -30,12 +30,12 @@ var app = express();
         world:{
             room : { 
                 objects: [
-               
+             /*  
                 {type:'cube', x:3592.401, y:0, z:8985.587, player_id:'iA0'+Math.round(Math.random()*10), color:getRandColor() },
                 {type:'cube', x:3446.799, y:0, z:8194.131, player_id:'iA0'+Math.round(Math.random()*100),color:getRandColor() },
                 {type:'cube', x:2531.099, y:0, z:8415.116, player_id:'iA0'+Math.round(Math.random()*1000),color:getRandColor() },
                 {type:'cube', x:4141.059, y:0, z:8541.586, player_id:'iA0'+Math.round(Math.random()*30000), color:getRandColor() },
-
+*/
 
             //    {type:'cube', x:3832.294, y:0, z:8808.042, player_id:'iA0'+Math.round(Math.random()*30000), color:getRandColor() },
 
@@ -151,14 +151,24 @@ console.log('running')
 
         var pcolor = getRandColor()
 
-        var m =  {type:'cube', x:0, y:0, z:0, player_name: pname, player_id:socket.id, color: pcolor}
+
+
+
+        var m =  {type:'cube', x:1222.6917007520656, y:3, z:5891.876220703125, player_name: pname, player_id:socket.id, color: pcolor}
+       
+  
+
+  
+
+  
+
         game.world.room.objects.push(m)
         
 
 
         var back = {game:game, me: m}
         socket.emit('loaded', back )        
-        socket.broadcast.emit('new_player',m)
+        socket.broadcast.emit('new_player', m)
 
         console.log('socket into server '+app.get('API_SERVER_PORT'))
 
@@ -190,6 +200,26 @@ console.log('running')
     
 
     });
+
+
+       socket.on('build_map', function(data){
+    //  var b = {type:'cube', x:data.build.x, y:data.build.y, z:data.build.z, player_id:'iA0'+Math.round(Math.random()*10000), color: data.build.color }
+      //  game.world.room.objects.push(b)
+          data.done = true;
+      console.log(data)
+            var b = {type:'cube', x:data.object.x, y:data.object.y, z:data.object.z, player_id:'iA0'+Math.round(Math.random()*10000), color: data.object.color }
+        game.world.room.objects.push(b)
+      //  var back = {build:b, game:game}
+        socket.emit('build_map_back', data)
+       /// socket.broadcast.emit('buildback', back)
+    
+
+    });
+
+
+
+
+     
 
  })
 

@@ -1,5 +1,13 @@
-Javascript VR 3d chat (aframe+socket.io)
+Javascript VR 3d chat+map (ThreeJS + socket.io)
 
+
+Display cube on a map (google api tool)
+Multi-players / socket server
+
+
+# marker editor
+	add objects to a room (googlemaps+socket.io)
+	> localhost:PORT/map.html
 
 ## AUTHOR
 
